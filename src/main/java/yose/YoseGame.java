@@ -8,14 +8,25 @@ import spark.template.freemarker.FreeMarkerEngine;
 
 import static spark.Spark.*;
 
+import com.google.gson.Gson;
+
 public class YoseGame {
     public static void main(String[] args) {
     	port(getHerokuAssignedPort());
     	
+    	Gson gson = new Gson();
+    	
     	get("/", (request, response) -> {
-
+    		response.type("text/html");
+    		
             return new ModelAndView(new Object(), "index.ftl");
         }, new FreeMarkerEngine());
+    	
+    	get("/ping", (request, response) -> {
+    		response.type("application/json");
+    		
+    		return new Status(true); 
+    	}, gson::toJson);
     }
     
     static int getHerokuAssignedPort() {
