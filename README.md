@@ -1,4 +1,4 @@
-java-spark-example for Yose the game
+java-spark-example for YoseTheGame
 =====================
 
 A an example to get you started to YoseTheGame using [spark](http://www.sparkjava.com).
