@@ -38,3 +38,6 @@ If you want to try out the [Heroku Cloud Platform](http://www.heroku.com), I hav
 
 You should be able to deploy the application with a simple ```git push``` to Heroku
 
+Live sample can be viewed from ```http://java-spark-yose.herokuapp.com/```
+The player status can be viewed from ```http://yosethegame.com/players/spark```
+
