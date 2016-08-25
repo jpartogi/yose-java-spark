@@ -1,8 +1,5 @@
 package yose;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import spark.ModelAndView;
 import spark.template.freemarker.FreeMarkerEngine;
 
@@ -12,8 +9,14 @@ import com.google.gson.Gson;
 
 public class YoseGame {
     public static void main(String[] args) {
-    	port(getHerokuAssignedPort());
+    	port(getPort());
     	
+    	YoseGame yose = new YoseGame();
+    	yose.start();
+    }
+    
+    // Define the routes for the application here
+    public void start(){
     	Gson gson = new Gson();
     	
     	get("/", (request, response) -> {
@@ -26,10 +29,10 @@ public class YoseGame {
     		response.type("application/json");
     		
     		return new Status(true); 
-    	}, gson::toJson);
+    	}, gson::toJson);    	
     }
     
-    static int getHerokuAssignedPort() {
+    static int getPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
             return Integer.parseInt(processBuilder.environment().get("PORT"));
